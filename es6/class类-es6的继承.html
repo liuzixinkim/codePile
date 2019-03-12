@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>类继承</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    </style>
+    <script>
+        //父类
+        class Person{
+            constructor(name){
+                this.name = name;
+            }
+            showName(){
+                console.log(`名字为: ${this.name}`);
+            }
+        }
+
+        let p1 = new Person('张三');
+        p1.showName();
+
+        //子类
+        //使用extends继承类
+        class Student extends Person{
+            constructor(name,skill){
+                super(name); //继承属性
+                this.skill = skill;
+            }
+            showName(){
+                super.showName(); //防止同名的方法覆盖 执行一遍父类的方法
+                //TODO 做子级事情
+                console.log('子类里的showName');
+
+            }
+            showSkill(){
+                console.log(this.skill);
+            }
+        }
+        
+
+        let stu1 = new Student('王二','逃学');
+        stu1.showName();
+        stu1.showSkill();
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

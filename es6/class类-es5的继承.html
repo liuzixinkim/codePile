@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>类继承</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    </style>
+    <script>
+        
+        //父类
+        function Person(name){
+            this.name = name;
+        }
+        Person.prototype.showName = function(){
+            console.log(`名字是: ${this.name}`);
+        };
+
+        let p1 = new Person('张三');
+        p1.showName();
+
+        //子类
+        //继承属性 用函数调用 再矫正this
+        function Student(name,skill){
+            Person.call(this,name); 
+            this.skill = skill;
+        }
+        //方法继承 原型链继承
+        Student.prototype = new Person();
+        Student.prototype.showSkill = function (){
+            console.log(`我的技能是${this.skill}`);
+        }
+
+        let stu1 = new Student('王二','逃学');
+        stu1.showName();
+        stu1.showSkill();
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
